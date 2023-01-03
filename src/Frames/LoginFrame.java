@@ -17,8 +17,11 @@ public class LoginFrame extends javax.swing.JFrame {
          dbHelper dbHelper1 = new dbHelper();
          Statement statement = null;
          ResultSet resultSet;
+         
     public LoginFrame() {
         initComponents();
+        dbHelper1.createDatabase();
+        dbHelper1.createAllTable();
     }
 
     /**

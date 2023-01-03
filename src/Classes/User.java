@@ -1,6 +1,5 @@
 package Classes;
 
-
 import Frames.AddNewHousemateFrame;
 import Frames.AdminFrame;
 import Frames.AdminPasswordFrame;
@@ -14,13 +13,11 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
- 
- 
 public class User extends AUser {
 
     Connection connection = null;
     dbHelper dbHelper1 = new dbHelper();
-    Statement statement ;
+    Statement statement;
     ResultSet resultSet;
 
     LoginFrame logFrame = new LoginFrame();
@@ -28,33 +25,40 @@ public class User extends AUser {
 
     public User(String name, String surname, String userName, String password) {
         super(name, surname, userName, password);
-        
+
     }
-
-    
-   
-
-    
 
     public void logInCheck(String name, String password) {
         try {
             connection = dbHelper1.getConnection();
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("select * from deneme");
 
-            while (resultSet.next()) {
+            if (name.equals("admin")) {
+                resultSet = statement.executeQuery("select * from admin");
+                while (resultSet.next()) {
+                    String pass = resultSet.getString("password");
+                    if (password.equals(pass)) {
+                        main.setVisible(true);
+                        logFrame.setVisible(false);
+                    }
+                }
 
-                String a = resultSet.getString("UserName");
-                String b = resultSet.getString("Password");
+            } else {
+                resultSet = statement.executeQuery("select * from User");
+                while (resultSet.next()) {
 
-                System.out.println(a + b);
-                if (name.equals(a) && password.equals(b)) {
-                    main.setVisible(true);
-                    logFrame.setVisible(false);
-                    
+                    String a = resultSet.getString("UserName");
+                    String b = resultSet.getString("Password");
 
+                    System.out.println(a + b);
+                    if (name.equals(a) && password.equals(b)) {
+                        main.setVisible(true);
+                        logFrame.setVisible(false);
+
+                    }
                 }
             }
+
         } catch (Exception e) {
             System.out.println("hata" + e);
         } finally {
@@ -68,24 +72,22 @@ public class User extends AUser {
         }
 
     }
-    
+
     public void AdminCheck(String password) {
         try {
             connection = dbHelper1.getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery("select * from admin");
-             AdminFrame admin = new AdminFrame();
-             AdminPasswordFrame APF = new AdminPasswordFrame();
+            AdminFrame admin = new AdminFrame();
+            AdminPasswordFrame APF = new AdminPasswordFrame();
 
             while (resultSet.next()) {
 
                 String pass = resultSet.getString("password");
 
-               
                 if (password.equals(pass)) {
                     admin.setVisible(true);
-                   APF.setVisible(false);
-                    
+                    APF.setVisible(false);
 
                 }
             }
@@ -102,6 +104,5 @@ public class User extends AUser {
         }
 
     }
-    
-   
+
 }
