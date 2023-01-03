@@ -19,7 +19,8 @@ public class User extends AUser {
     dbHelper dbHelper1 = new dbHelper();
     Statement statement;
     ResultSet resultSet;
-
+    AdminFrame admin = new AdminFrame();
+    AdminPasswordFrame APF = new AdminPasswordFrame();
     LoginFrame logFrame = new LoginFrame();
     MainMenuFrame main = new MainMenuFrame();
 
@@ -78,8 +79,7 @@ public class User extends AUser {
             connection = dbHelper1.getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery("select * from admin");
-            AdminFrame admin = new AdminFrame();
-            AdminPasswordFrame APF = new AdminPasswordFrame();
+            
 
             while (resultSet.next()) {
 

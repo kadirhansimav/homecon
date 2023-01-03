@@ -96,33 +96,73 @@ public class Admin extends AUser implements IAdmin {
     }
 
     public void changeName(String newName) {
-        Connection connection = null;
+        Connection connection;
         dbHelper dbHelper1 = new dbHelper();
-        PreparedStatement statement = null;
+        Statement stm;
+        PreparedStatement statement;
         ResultSet resultSet;
+
         try {
-            resultSet = statement.executeQuery("select * from User");
+            connection = dbHelper1.getConnection();
+            stm = connection.createStatement();
+            resultSet = stm.executeQuery("select * from User");
             while (resultSet.next()) {
 
                 String a = resultSet.getString("UserName");
 
                 System.out.println(a);
                 if (LoginFrame.UserName.equals(a)) {
-                      String sql = "UPDATE User SET UserName=? where UserName=?";
-                      try {
-                          statement = connection.prepareStatement(sql);
-                          statement.setString(1, newName);
-                          statement.setString(2, LoginFrame.UserName);
+
+                    try {
+                        String sql = "UPDATE User SET UserName=? where UserName=?";
+                        statement = connection.prepareStatement(sql);
+                        statement.setString(1, newName);
+                        statement.setString(2, LoginFrame.UserName);
+                        statement.executeUpdate();
                     } catch (Exception e) {
-                          System.out.println(e.getMessage());
+                        System.out.println(e.getMessage());
                     }
-                     
-                          
-                     
+
                 }
             }
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger("22" + Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void changePass(String newPass) {
+        Connection connection;
+        dbHelper dbHelper1 = new dbHelper();
+        Statement stm;
+        PreparedStatement statement;
+        ResultSet resultSet;
+
+        try {
+            connection = dbHelper1.getConnection();
+            stm = connection.createStatement();
+            resultSet = stm.executeQuery("select * from User");
+            while (resultSet.next()) {
+
+                String a = resultSet.getString("UserName");
+
+                System.out.println(a);
+                if (LoginFrame.UserName.equals(a)) {
+
+                    try {
+                        String sql = "UPDATE User SET Password=? where UserName=?";
+                        statement = connection.prepareStatement(sql);
+                        statement.setString(1, newPass);
+                        statement.setString(2, LoginFrame.UserName);
+                        statement.executeUpdate();
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+
+                }
+            }
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger("22" + Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
     }

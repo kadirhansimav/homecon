@@ -19,6 +19,7 @@ public class ProfileFrame extends javax.swing.JFrame {
     LoginFrame login = new LoginFrame();
     Classes.Admin admin = new Classes.Admin(NameChange, NameChange, NameChange, NameChange);
     public static String NameChange;
+    public static String PassChange;
     
     
      
@@ -92,6 +93,11 @@ public class ProfileFrame extends javax.swing.JFrame {
         changePasswordButton.setFont(new java.awt.Font("SimHei", 1, 12)); // NOI18N
         changePasswordButton.setText("Change");
         changePasswordButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        changePasswordButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changePasswordButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,6 +169,12 @@ public class ProfileFrame extends javax.swing.JFrame {
            admin.changeName(NameChange);
            
     }//GEN-LAST:event_changeUsernameButtonActionPerformed
+
+    private void changePasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordButtonActionPerformed
+        // TODO add your handling code here:
+        PassChange= passwordChangeField.getText();
+        admin.changePass(PassChange);
+    }//GEN-LAST:event_changePasswordButtonActionPerformed
 
     /**
      * @param args the command line arguments
