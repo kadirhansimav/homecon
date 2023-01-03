@@ -1,5 +1,6 @@
 package Classes;
 
+import java.io.File;
 import java.sql.*;
 
 /**
@@ -8,7 +9,7 @@ import java.sql.*;
  */
 public class dbHelper {
 
-    private String ConUrl = "jdbc:sqlite:C:/sqlite/Homecon.db";
+    private String ConUrl = "jdbc:sqlite:C:/sqlite1234/Homecon.db";
 
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(ConUrl);
@@ -19,7 +20,7 @@ public class dbHelper {
     }
 
     public void createDatabase() {
-        String url = "jdbc:sqlite:C:/sqlite/Homecon.db";
+        String url = "jdbc:sqlite:C:/sqlite1234/Homecon.db";
         try {
             Connection conn = DriverManager.getConnection(url);
             if (conn != null) {
@@ -33,7 +34,7 @@ public class dbHelper {
     }
 
     public void createAllTable() {
-        String url = "jdbc:sqlite:C:/sqlite/Homecon.db";
+        String url = "jdbc:sqlite:C:/sqlite1234/Homecon.db";
         String sql1 = "CREATE TABLE IF NOT EXISTS User\n"
                 + "(UserID INTEGER UNIQUE,\n"
                 + "UserName TEXT UNIQUE,\n"
@@ -70,6 +71,10 @@ public class dbHelper {
             System.out.println(e.getMessage());
         }
 
+    }
+    
+    public void createFolder(){
+        new File("/C:/sqlite1234").mkdirs();
     }
 
 }

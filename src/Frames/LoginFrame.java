@@ -20,8 +20,10 @@ public class LoginFrame extends javax.swing.JFrame {
          
     public LoginFrame() {
         initComponents();
+        dbHelper1.createFolder();
         dbHelper1.createDatabase();
         dbHelper1.createAllTable();
+        
     }
 
     /**
