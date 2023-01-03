@@ -14,8 +14,18 @@ public class ProfileFrame extends javax.swing.JFrame {
     /**
      * Creates new form Profile
      */
+    LoginFrame login = new LoginFrame();
+    
+    public void changeName(String a){
+        nameSurname.setText("a");
+    }
+    
+    
+    
     public ProfileFrame() {
         initComponents();
+        
+         System.out.println(login.UserName);
     }
 
     /**
@@ -66,6 +76,11 @@ public class ProfileFrame extends javax.swing.JFrame {
         changeUsernameButton.setFont(new java.awt.Font("SimHei", 1, 12)); // NOI18N
         changeUsernameButton.setText("Change");
         changeUsernameButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        changeUsernameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeUsernameButtonActionPerformed(evt);
+            }
+        });
 
         changePasswordButton.setBackground(new java.awt.Color(153, 204, 255));
         changePasswordButton.setFont(new java.awt.Font("SimHei", 1, 12)); // NOI18N
@@ -135,6 +150,11 @@ public class ProfileFrame extends javax.swing.JFrame {
         main.setVisible(true); 
         this.setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void changeUsernameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeUsernameButtonActionPerformed
+        // TODO add your handling code here:
+           
+    }//GEN-LAST:event_changeUsernameButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jdk.jfr.StackTrace;
+import Frames.ProfileFrame;
 
  
 public class LoginFrame extends javax.swing.JFrame {
@@ -18,11 +19,16 @@ public class LoginFrame extends javax.swing.JFrame {
          Statement statement = null;
          ResultSet resultSet;
          
+        public static String UserName; 
+         public static String UserPass;
+ 
+         
     public LoginFrame() {
         initComponents();
         dbHelper1.createFolder();
         dbHelper1.createDatabase();
         dbHelper1.createAllTable();
+       
         
     }
 
@@ -122,18 +128,25 @@ public class LoginFrame extends javax.swing.JFrame {
     private void logInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInButtonActionPerformed
         // Opens Main Menu frame
         
-         
-         
+         String UserName=jTextField1.getText();
+       
+        String UserPass = jTextField2.getText();
+        
         
         String name = jTextField1.getText();
         String password = jTextField2.getText();
         User log = new User(" "," ",name,password);
         log.logInCheck(name, password);
-        
+        ProfileFrame pF = new ProfileFrame();
+        pF.changeName(name);
         
     
     }//GEN-LAST:event_logInButtonActionPerformed
 
+    
+    
+    
+    
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed

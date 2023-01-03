@@ -49,6 +49,7 @@ public class dbHelper {
         String sql3 = "CREATE TABLE IF NOT EXISTS expenses\n"
                 + "(User TEXT,\n"
                 + "ExpenseType TEXT,\n"
+                + "Amount TEXT,\n"
                 + "Price INTEGER,\n"
                 + "PRIMARY KEY(User))";
         String sql4 = "CREATE TABLE IF NOT EXISTS need\n "
