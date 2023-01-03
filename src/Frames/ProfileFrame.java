@@ -1,4 +1,5 @@
 package Frames;
+ 
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -14,18 +15,23 @@ public class ProfileFrame extends javax.swing.JFrame {
     /**
      * Creates new form Profile
      */
+     
     LoginFrame login = new LoginFrame();
+    Classes.Admin admin = new Classes.Admin(NameChange, NameChange, NameChange, NameChange);
+    public static String NameChange;
     
-    public void changeName(String a){
-        nameSurname.setText("a");
-    }
+    
+     
+       
+    
     
     
     
     public ProfileFrame() {
         initComponents();
-        
-         System.out.println(login.UserName);
+         nameSurname.setText(LoginFrame.UserName);
+         System.out.println(LoginFrame.UserName);
+    
     }
 
     /**
@@ -153,6 +159,8 @@ public class ProfileFrame extends javax.swing.JFrame {
 
     private void changeUsernameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeUsernameButtonActionPerformed
         // TODO add your handling code here:
+           NameChange = usernameChangeField.getText();
+           admin.changeName(NameChange);
            
     }//GEN-LAST:event_changeUsernameButtonActionPerformed
 

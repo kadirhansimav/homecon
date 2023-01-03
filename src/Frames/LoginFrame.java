@@ -18,9 +18,8 @@ public class LoginFrame extends javax.swing.JFrame {
          dbHelper dbHelper1 = new dbHelper();
          Statement statement = null;
          ResultSet resultSet;
-         
-        public static String UserName; 
-         public static String UserPass;
+        public static String UserName = " null now";
+        public static String UserPass = " null now";
  
          
     public LoginFrame() {
@@ -128,19 +127,16 @@ public class LoginFrame extends javax.swing.JFrame {
     private void logInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInButtonActionPerformed
         // Opens Main Menu frame
         
-         String UserName=jTextField1.getText();
+       UserName=jTextField1.getText();
        
-        String UserPass = jTextField2.getText();
+       UserPass = jTextField2.getText();
         
         
         String name = jTextField1.getText();
         String password = jTextField2.getText();
         User log = new User(" "," ",name,password);
         log.logInCheck(name, password);
-        ProfileFrame pF = new ProfileFrame();
-        pF.changeName(name);
-        
-    
+         
     }//GEN-LAST:event_logInButtonActionPerformed
 
     

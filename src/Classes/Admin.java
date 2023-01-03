@@ -1,6 +1,8 @@
 package Classes;
 
 import Frames.AddNewHousemateFrame;
+import Frames.LoginFrame;
+import Frames.MainMenuFrame;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.sql.*;
@@ -19,6 +21,8 @@ public class Admin extends AUser implements IAdmin {
     dbHelper dbHelper1 = new dbHelper();
     Statement statement;
     ResultSet resultSet;
+    MainMenuFrame main = new MainMenuFrame();
+    LoginFrame log = new LoginFrame();
 
     public Admin(String name, String surname, String userName, String password) {
         super(name, surname, userName, password);
@@ -87,6 +91,38 @@ public class Admin extends AUser implements IAdmin {
                 System.out.println("Classes.Admin.addNewHousemate()");
             }
 
+        }
+
+    }
+
+    public void changeName(String newName) {
+        Connection connection = null;
+        dbHelper dbHelper1 = new dbHelper();
+        PreparedStatement statement = null;
+        ResultSet resultSet;
+        try {
+            resultSet = statement.executeQuery("select * from User");
+            while (resultSet.next()) {
+
+                String a = resultSet.getString("UserName");
+
+                System.out.println(a);
+                if (LoginFrame.UserName.equals(a)) {
+                      String sql = "UPDATE User SET UserName=? where UserName=?";
+                      try {
+                          statement = connection.prepareStatement(sql);
+                          statement.setString(1, newName);
+                          statement.setString(2, LoginFrame.UserName);
+                    } catch (Exception e) {
+                          System.out.println(e.getMessage());
+                    }
+                     
+                          
+                     
+                }
+            }
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
     }
