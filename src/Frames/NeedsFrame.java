@@ -185,7 +185,7 @@ public class NeedsFrame extends javax.swing.JFrame {
             }
             
         }
-        
+        needs.tableUpdate();
     }//GEN-LAST:event_removeButtonActionPerformed
 
     /**

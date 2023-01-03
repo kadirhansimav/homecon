@@ -2,6 +2,8 @@ package Frames;
 
 
 import Classes.Admin;
+import Classes.IAdmin;
+import Classes.User;
 import Classes.dbHelper;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,6 +26,7 @@ public class AddNewHousemateFrame extends javax.swing.JFrame {
     /**
      * Creates new form AddNewHousemate
      */
+    Admin admin = new Admin("", "", "", "");
     public AddNewHousemateFrame() {
         initComponents();
     }
@@ -157,42 +160,9 @@ public class AddNewHousemateFrame extends javax.swing.JFrame {
 
     private void addHousemateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addHousemateButtonActionPerformed
         // TODO add your handling code here:
-         Connection connection =null; 
-        dbHelper dbHelper1 = new dbHelper();
-         PreparedStatement statement =null;
-         ResultSet resultSet ;
-        //!!!!!!!!! PERSON YERİNE ADMİN  !!!!!!!
-        Admin person = new Admin(nameField.getText(),surnameField.getText(), usernameField.getText(), passwordField.getText());
+          admin.addNewHousemate(nameField.getText(),surnameField.getText(), usernameField.getText(), passwordField.getText());
         
-        
-        try {
-            String username = usernameField.getText();
-            String password = passwordField.getText();
-            String name = nameField.getText();
-            String surname = surnameField.getText();
-            connection = dbHelper1.getConnection(); 
-            String sql = "insert into deneme (UserName,Password,Name,Surname) values (?,?,?,?)";
-            statement = connection.prepareStatement(sql);         
-            statement.setString(1, username);
-            statement.setString(2, password);
-            statement.setString(3, name);
-            statement.setString(4, surname);
-            statement.executeUpdate();
-            System.out.println("AddNewHousemate.jButton1ActionPerformed() ekleme");         
-        } catch (Exception e) {
-            System.out.println("hkullanıcı mevcut");
-        } finally {
-             try {
-                 connection.close();
-                 statement.close();
-                 
-             } catch (SQLException ex) {
-                 Logger.getLogger(AddNewHousemateFrame.class.getName()).log(Level.SEVERE, null, ex);
-             }
-            
-        }
-        
-        
+ 
     }//GEN-LAST:event_addHousemateButtonActionPerformed
 
     /**
@@ -243,4 +213,8 @@ public class AddNewHousemateFrame extends javax.swing.JFrame {
     private javax.swing.JTextField surnameField;
     private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
+
+
+    
+
 }

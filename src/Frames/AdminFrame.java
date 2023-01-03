@@ -4,6 +4,8 @@
  */
 package Frames;
 
+import Classes.Admin;
+
 /**
  *
  * @author baransonmez
@@ -13,6 +15,7 @@ public class AdminFrame extends javax.swing.JFrame {
     /**
      * Creates new form AdminFrame
      */
+    Admin admin = new Admin("", "", "", "");
     public AdminFrame() {
         initComponents();
     }
@@ -76,7 +79,7 @@ public class AdminFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
-        // TODO add your handling code here:
+       admin.deleteAll();
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void addHousemateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addHousemateButtonActionPerformed

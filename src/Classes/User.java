@@ -1,11 +1,13 @@
 package Classes;
 
 
+import Frames.AddNewHousemateFrame;
 import Frames.AdminFrame;
 import Frames.AdminPasswordFrame;
 import Frames.LoginFrame;
 import Frames.MainMenuFrame;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -100,5 +102,6 @@ public class User extends AUser {
         }
 
     }
-
+    
+   
 }
